@@ -1,4 +1,4 @@
 Target: Tiva C Series Tiva TM4C123GH6PM
 Connection: Stellaris In-Circuit Debug Interface
 
-LED: PF1/PF2/PF3 -> Green/Blue/Red
+LED: PF1/PF2/PF3 -> Red/Blue/Green
