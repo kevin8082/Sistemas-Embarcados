@@ -1,0 +1,5 @@
+flag = 0;
+flag ^= 1
+
+entra no flag ele vira 1 pq inverte o bit com 1
+na segunda sendo 1 o valor ele inverte os 2 1s que vai ser e vira valor 0 na flag.
