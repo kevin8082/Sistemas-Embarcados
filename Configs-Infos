@@ -2,3 +2,9 @@ Target: Tiva C Series Tiva TM4C123GH6PM
 Connection: Stellaris In-Circuit Debug Interface
 
 LED: PF1/PF2/PF3 -> Red/Blue/Green
+
+f=16Mhz
+t=1/f -> T=62.5ns
+
+1us -> x
+62.5ns -> 1 ciclo de clock
