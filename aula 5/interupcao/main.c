@@ -1,4 +1,4 @@
-#include <tm4c123gh6pm(1).h>
+#include <tm4c123gh6pm.h>
 #include <inttypes.h>
 
 void delay(){
