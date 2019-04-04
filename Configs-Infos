@@ -8,3 +8,6 @@ t=1/f -> T=62.5ns
 
 1us -> x
 62.5ns -> 1 ciclo de clock
+
+f=4Mhz
+T=250ns
