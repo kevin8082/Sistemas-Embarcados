@@ -108,11 +108,8 @@ int main(void)
 
 
     while(1){
-        if(novaCor <= 4){
-            novaCor++;
-        } else {
-            novaCor = 1;
-        }
+        if(novaCor < 5)novaCor++;
+        if(novaCor >= 5)novaCor = 1;
 
         if(level == 0){
             startup();
