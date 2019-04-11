@@ -17,6 +17,7 @@ void startup(){
     ultimoBotao = 0;
     controleCor = 1;
     count2 = 0;
+    novaCor = 1;
     for(count2 = 0; count2 < 6;count2++){
         GPIO_PORTA_DATA_R ^= 0x3C;
         delay();
@@ -55,6 +56,7 @@ void Trata_portc(){
         //Vermelho PA2
         piscaLedVermelho();
         ultimoBotao = 1;
+        if(novaCor > 4)novaCor = 1;
         if(level == 1){
             cores[1] = novaCor;
         }
@@ -106,9 +108,11 @@ int main(void)
 
 
     while(1){
-        if(novaCor < 5){
-        novaCor++;
-        }else{novaCor = 1;}
+        if(novaCor <= 4){
+            novaCor++;
+        } else {
+            novaCor = 1;
+        }
 
         if(level == 0){
             startup();
@@ -160,6 +164,7 @@ int main(void)
                 }
             }
             if(posAtual == level){
+                delay();
                 for(count2 = 0; count2 < 6;count2++){
                     GPIO_PORTA_DATA_R ^= 0x10;
                     delay();
@@ -176,5 +181,5 @@ int main(void)
 
 
       }
-	return 0;
+    return 0;
 }
