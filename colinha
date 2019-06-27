@@ -36,3 +36,20 @@ Tp -> período do processador em segundos to ciclo de clock(62.5ns)(1/clock do p
 PWMx_y_CMPA_R = (fPWM(cc) * porcentagem) / 100 -> Valor de porcentagem do PWM, em ciclos de clock
 PWMx_y_CTL_R -> ativa o gerador pwmx correspondente
 PWMx_ENABLE -> inicializa o pwmx  correspondente
+
+UART
+config pag 902
+
+SYSCTL_RCGCUART_R |= 0x01;                        // activate UART0
+SYSCTL_RCGCGPIO_R |= 0x01;                        // activate port A
+GPIO_PORTA_AFSEL_R |= 0x03;                       // enable alt funct on PA1-0
+GPIO_PORTA_PCTL_R |= 0x11;                        // enable UART funct on PA1-0
+
+UART0_CTL_R = 0x00;                               // disable UART
+UART0_IBRD_R = 8;                                 // IBRD = int(16.000.000 / (16 * 115.200)) = int(8,6805)
+UART0_FBRD_R = 44;                                // FBRD = int(0,6805 * 64 + 0.5) = 44
+UART0_LCRH_R = 0x70;                              // 8 bit word length (no parity bits, one stop bit, FIFOs)
+UART0_CC_R = 0x00;
+UART0_CTL_R = 0x301;                              // enable UART
+
+GPIO_PORTA_DEN_R |= 0x03;                         // enable digital I/O on PA1-0
