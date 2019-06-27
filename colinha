@@ -1,0 +1,38 @@
+ADC
+config pag 817+
+
+0 - 3.3v
+0 - 4095
+
+RCGCADC -> liga o clock do adc
+RCGCGPIO -> liga o clock do port
+AFSEL -> avisa que o pino vai ter outra funcionalidade
+AMSEL -> liga a função analógica do pino
+
+ADCx_ACTSS -> desliga o sample sequencer
+ADCx_EMUX -> configura o sample sequencer
+ADCx_SSMUXx -> dize qual vai ser o input(AINx)
+ADCx_SSCTLx -> diz qual sample é o end of sequence
+ADCx_ACTSS -> liga o sample sequencer
+ADCx_PSSI -> liga o sample sequencer x
+leitura = ADCx_SSFIFOx_R;
+
+PWM
+config pag 1239
+
+RCGCGPIO -> liga o clock do port
+AFSEL -> avisa que o pino vai ter outra funcionalidade
+PCTL -> Definir que a função alternativa do port é PWM(olhar página 1351 pro valor pra colocar dependendo do port)
+DEN -> ativar digitalmente
+
+RCGCPWM -> ativar o módulo pwm correspondente do port
+PWMx_y_GENA/B(depende do port usado) = 0xC8 -> Nivel baixo em LOAD / Nivel alto em CMPA(fica mais dentro da visualização)
+
+PWMx_y_LOAD -> Valor de frequencia do PWM, em ciclos de clock -> fPWM(cc) = 1/(fPWM(hz)*Tp)
+fPWM(cc) -> frequencia em ciclos de clock
+fPWM(hz) -> frequencia desejada
+Tp -> período do processador em segundos to ciclo de clock(62.5ns)(1/clock do processador)
+
+PWMx_y_CMPA_R = (fPWM(cc) * porcentagem) / 100 -> Valor de porcentagem do PWM, em ciclos de clock
+PWMx_y_CTL_R -> ativa o gerador pwmx correspondente
+PWMx_ENABLE -> inicializa o pwmx  correspondente
